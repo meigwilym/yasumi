@@ -112,7 +112,12 @@
         <!-- Test Suite for holidays in United Kingdom -->
         <testsuite name="UnitedKingdom">
             <directory suffix="Test.php">./tests/UnitedKingdom</directory>
-        </testsuite>        
+        </testsuite>
+
+        <!-- Test Suite for holidays in Taiwan -->
+        <testsuite name="Taiwan">
+            <directory suffix="Test.php">./tests/Taiwan</directory>
+        </testsuite>
 
     </testsuites>
     <filter>
