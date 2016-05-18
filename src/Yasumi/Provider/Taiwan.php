@@ -9,12 +9,12 @@
  *
  * @author Sacha Telgenhof <stelgenhof@gmail.com>
  */
-
 namespace Yasumi\Provider;
 
+use Yasumi\Holiday;
 use DateTime;
 use DateTimeZone;
-use Yasumi\Holiday;
+use DateInterval;
 
 /**
  * Provider for all holidays in Taiwan.
@@ -22,7 +22,7 @@ use Yasumi\Holiday;
 class Taiwan extends AbstractProvider
 {
     use CommonHolidays;
-    
+
     /**
      * Code to identify this Holiday Provider. Typically this is the ISO3166 code corresponding to the respective
      * country or subregion.
@@ -37,5 +37,28 @@ class Taiwan extends AbstractProvider
         $this->timezone = 'Asia/Taipei';
 
         $this->addHoliday($this->newYearsDay($this->year, $this->timezone, $this->locale));
+        $this->calculateInternationalWorkersDay();
+    }
+
+    /**
+     * Calculates Labour Day (InternationalWorkersDay).
+     *
+     * May Day, or Labour Day, is a public holiday in many countries worldwide. It usually occurs around May 1,
+     * but the date varies across countries. It is associated the start of spring as well as the celebration
+     * of workers.
+     *
+     * If Labour Day falls on non working day (e.g. weekend) it will be observed on the following workingday.
+     *
+     * @link http://www.timeanddate.com/holidays/taiwan/labor-day
+     */
+    public function calculateInternationalWorkersDay()
+    {
+        $date = new DateTime("$this->year-5-1", new DateTimeZone($this->timezone));
+
+        if (!$this->isWorkingDay($date)) {
+            $date->add(new DateInterval('P2D'));
+        }
+
+        $this->addHoliday(new Holiday('internationalWorkersDay', [], $date, $this->locale));
     }
 }

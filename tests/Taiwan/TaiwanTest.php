@@ -9,7 +9,6 @@
  *
  *  @author Sacha Telgenhof <stelgenhof@gmail.com>
  */
-
 namespace Yasumi\tests\Taiwan;
 
 use Yasumi\Holiday;
@@ -25,17 +24,18 @@ class TaiwanTest extends TaiwanBaseTestCase
     protected $year;
 
     /**
-     * Tests if all national holidays in Taiwan are defined by the provider class
+     * Tests if all national holidays in Taiwan are defined by the provider class.
      */
     public function testNationalHolidays()
     {
         $this->assertDefinedHolidays([
             'newYearsDay',
+            'internationalWorkersDay',
         ], self::REGION, $this->year, Holiday::TYPE_NATIONAL);
     }
 
     /**
-     * Tests if all observed holidays in Taiwan are defined by the provider class
+     * Tests if all observed holidays in Taiwan are defined by the provider class.
      */
     public function testObservedHolidays()
     {
@@ -43,7 +43,7 @@ class TaiwanTest extends TaiwanBaseTestCase
     }
 
     /**
-     * Tests if all seasonal holidays in Taiwan are defined by the provider class
+     * Tests if all seasonal holidays in Taiwan are defined by the provider class.
      */
     public function testSeasonalHolidays()
     {
@@ -51,7 +51,7 @@ class TaiwanTest extends TaiwanBaseTestCase
     }
 
     /**
-     * Tests if all bank holidays in Taiwan are defined by the provider class
+     * Tests if all bank holidays in Taiwan are defined by the provider class.
      */
     public function testBankHolidays()
     {
@@ -59,7 +59,7 @@ class TaiwanTest extends TaiwanBaseTestCase
     }
 
     /**
-     * Tests if all other holidays in Taiwan are defined by the provider class
+     * Tests if all other holidays in Taiwan are defined by the provider class.
      */
     public function testOtherHolidays()
     {
@@ -67,7 +67,7 @@ class TaiwanTest extends TaiwanBaseTestCase
     }
 
     /**
-     * Initial setup of this Test Case
+     * Initial setup of this Test Case.
      */
     protected function setUp()
     {

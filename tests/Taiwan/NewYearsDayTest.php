@@ -9,7 +9,6 @@
  *
  *  @author Sacha Telgenhof <stelgenhof@gmail.com>
  */
-
 namespace Yasumi\tests\Taiwan;
 
 use DateTime;
@@ -22,7 +21,7 @@ use Yasumi\tests\YasumiTestCaseInterface;
 class NewYearsDayTest extends TaiwanBaseTestCase implements YasumiTestCaseInterface
 {
     /**
-     * The name of the holiday to be tested
+     * The name of the holiday to be tested.
      */
     const HOLIDAY = 'newYearsDay';
 

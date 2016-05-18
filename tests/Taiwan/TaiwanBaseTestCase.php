@@ -9,7 +9,6 @@
  *
  *  @author Sacha Telgenhof <stelgenhof@gmail.com>
  */
-
 namespace Yasumi\tests\Taiwan;
 
 use PHPUnit_Framework_TestCase;
@@ -23,17 +22,17 @@ abstract class TaiwanBaseTestCase extends PHPUnit_Framework_TestCase
     use YasumiBase;
 
     /**
-     * Name of the region (e.g. country / state) to be tested
+     * Name of the region (e.g. country / state) to be tested.
      */
     const REGION = 'Taiwan';
 
     /**
-     * Timezone in which this provider has holidays defined
+     * Timezone in which this provider has holidays defined.
      */
     const TIMEZONE = 'Asia/Taipei';
 
     /**
-     * Locale that is considered common for this provider
+     * Locale that is considered common for this provider.
      */
     const LOCALE = 'zh_Hant_TW';
 }
