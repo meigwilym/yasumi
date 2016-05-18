@@ -71,6 +71,6 @@ class TaiwanTest extends TaiwanBaseTestCase
      */
     protected function setUp()
     {
-        $this->year = $this->generateRandomYear();
+        $this->year = $this->generateRandomYear(1995);
     }
 }
