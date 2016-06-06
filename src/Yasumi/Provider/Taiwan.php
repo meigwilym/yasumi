@@ -39,6 +39,8 @@ class Taiwan extends AbstractProvider
         $this->addHoliday($this->newYearsDay($this->year, $this->timezone, $this->locale));
         $this->calculateInternationalWorkersDay();
         $this->calculate228PeaceMemorialDay();
+
+        $this->calculateSubstituteHolidays();
     }
 
     /**
@@ -48,7 +50,7 @@ class Taiwan extends AbstractProvider
      * but the date varies across countries. It is associated the start of spring as well as the celebration
      * of workers.
      *
-     * If Labour Day falls on non working day (e.g. weekend) it will be observed on the following workingday.
+     * If Labour Day falls on non working day (e.g. weekend), a deferred day off will be granted. 
      *
      * @link http://www.timeanddate.com/holidays/taiwan/labor-day
      */
@@ -73,7 +75,9 @@ class Taiwan extends AbstractProvider
      * made a national holiday to commemorate the events of 1947. Since then, several monuments have been erected in
      * memory of the massacre and Taipei New Park was renamed 228 Memorial Park.
      *
-     * If 228 Peace Memorial Day falls on non working day (e.g. weekend) it will be observed on the following workingday.
+     * If 228 Peace Memorial Day falls on non working day (e.g. weekend), a deferred day off will be granted.
+     * In case it falls on a Saturday, the deferred day off is on the preceding workday; Otherwise, it falls on a Sunday
+     * the deferred day off is on he following workday.
      *
      * @link http://www.officeholidays.com/countries/taiwan/peace_memorial_day.php
      */
@@ -85,10 +89,34 @@ class Taiwan extends AbstractProvider
 
         $date = new DateTime("$this->year-2-28", new DateTimeZone($this->timezone));
 
-        if (!$this->isWorkingDay($date)) {
-            $date->add(new DateInterval('P2D'));
+        if (in_array($date->format('w'), [0])) {
+            $date->sub(new DateInterval('P1D'));
+        }
+
+        if (in_array($date->format('w'), [6])) {
+            $date->add(new DateInterval('P1D'));
         }
 
         $this->addHoliday(new Holiday('228PeaceMemorialDay', ['zh_Hant_TW' => '228和平紀念日'], $date, $this->locale));
     }
+
+    /**
+     * Calculate the substitute holidays.
+     *
+     * When the memorial day or holiday falls on a Saturday or Sunday, a deferred day off will be granted.
+     * In case it falls on a Saturday, the deferred day off is on the preceding workday; Otherwise, it falls on a Sunday
+     * the deferred day off is on he following workday.
+     */
+    private function calculateSubstituteHolidays() {
+
+        // Get initial list of holidays and iterator
+        $datesIterator = $this->getIterator();
+
+        // Loop through all defined holidays
+        while ($datesIterator->valid()) {
+            echo  $datesIterator->current()->format('Y').PHP_EOL;
+            $datesIterator->next();
+        }
+
+    }    
 }

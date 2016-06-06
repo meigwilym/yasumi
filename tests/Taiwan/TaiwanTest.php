@@ -31,6 +31,7 @@ class TaiwanTest extends TaiwanBaseTestCase
         $this->assertDefinedHolidays([
             'newYearsDay',
             'internationalWorkersDay',
+            '228PeaceMemorialDay',
         ], self::REGION, $this->year, Holiday::TYPE_NATIONAL);
     }
 

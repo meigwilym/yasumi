@@ -42,7 +42,6 @@ class PeaceMemorialDayTest extends TaiwanBaseTestCase implements YasumiTestCaseI
      */
     public function testHoliday($year, $expected)
     {
-        //$year = 2101;
         $this->assertHoliday(self::REGION, self::HOLIDAY, $year, $expected);
     }
 
@@ -59,9 +58,16 @@ class PeaceMemorialDayTest extends TaiwanBaseTestCase implements YasumiTestCaseI
             $year = $this->generateRandomYear(self::ESTABLISHMENT_YEAR);
             $date = new DateTime($year.'-2-28', new DateTimeZone(self::TIMEZONE));
 
-            // If the holidays falls into the weekend, it is observed the next workingday.
-            if (in_array($date->format('w'), [0, 6])) {
-                $date->add(new DateInterval('P2D'));
+            /* When the memorial day or holiday falls on a Saturday or Sunday, a deferred day off will be granted.
+             * If a memorial day or a holiday falls on a Saturday, the deferred day off is on the preceding workday; 
+             * if a memorial day or a holiday falls on a Sunday, the deferred * day off is on he following workday.
+             */
+            if (in_array($date->format('w'), [0])) {
+                $date->sub(new DateInterval('P1D'));
+            }
+
+            if (in_array($date->format('w'), [6])) {
+                $date->add(new DateInterval('P1D'));
             }
 
             $data[] = [$year, $date];
@@ -75,8 +81,7 @@ class PeaceMemorialDayTest extends TaiwanBaseTestCase implements YasumiTestCaseI
      */
     public function testHolidayBeforeEstablishment()
     {
-        $this->assertNotHoliday(self::REGION, self::HOLIDAY,
-            $this->generateRandomYear(1000, self::ESTABLISHMENT_YEAR - 1));
+        $this->assertNotHoliday(self::REGION, self::HOLIDAY, $this->generateRandomYear(1000, self::ESTABLISHMENT_YEAR - 1));
     }
 
     /**
@@ -84,8 +89,7 @@ class PeaceMemorialDayTest extends TaiwanBaseTestCase implements YasumiTestCaseI
      */
     public function testTranslation()
     {
-        $this->assertTranslatedHolidayName(self::REGION, self::HOLIDAY,
-            $this->generateRandomYear(self::ESTABLISHMENT_YEAR), [self::LOCALE => '228和平紀念日']);
+        $this->assertTranslatedHolidayName(self::REGION, self::HOLIDAY, $this->generateRandomYear(self::ESTABLISHMENT_YEAR), [self::LOCALE => '228和平紀念日']);
     }
 
     /**
@@ -93,7 +97,6 @@ class PeaceMemorialDayTest extends TaiwanBaseTestCase implements YasumiTestCaseI
      */
     public function testHolidayType()
     {
-        $this->assertHolidayType(self::REGION, self::HOLIDAY, $this->generateRandomYear(self::ESTABLISHMENT_YEAR),
-            Holiday::TYPE_NATIONAL);
+        $this->assertHolidayType(self::REGION, self::HOLIDAY, $this->generateRandomYear(self::ESTABLISHMENT_YEAR), Holiday::TYPE_NATIONAL);
     }
 }

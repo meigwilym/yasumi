@@ -69,8 +69,7 @@ class InternationalWorkersDayTest extends TaiwanBaseTestCase implements YasumiTe
      */
     public function testTranslation()
     {
-        $this->assertTranslatedHolidayName(self::REGION, self::HOLIDAY, $this->generateRandomYear(),
-            [self::LOCALE => '国际劳动节']);
+        $this->assertTranslatedHolidayName(self::REGION, self::HOLIDAY, $this->generateRandomYear(), [self::LOCALE => '国际劳动节']);
     }
 
     /**
