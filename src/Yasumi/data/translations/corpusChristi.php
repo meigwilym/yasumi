@@ -16,4 +16,5 @@ return [
     'en_US' => 'Corpus Christi',
     'es_ES' => 'Corpus Christi',
     'pl_PL' => 'Boże Ciało',
+    'pt_BR' => 'Corpus Christi',
 ];

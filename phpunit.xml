@@ -114,9 +114,9 @@
             <directory suffix="Test.php">./tests/UnitedKingdom</directory>
         </testsuite>
 
-        <!-- Test Suite for holidays in Taiwan -->
-        <testsuite name="Taiwan">
-            <directory suffix="Test.php">./tests/Taiwan</directory>
+        <!-- Test Suite for holidays in Brazil -->
+        <testsuite name="Brazil">
+            <directory suffix="Test.php">./tests/Brazil</directory>
         </testsuite>
 
     </testsuites>

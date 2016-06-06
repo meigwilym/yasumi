@@ -29,6 +29,7 @@ return [
     'nl_BE' => 'Nieuwjaar',
     'nl_NL' => 'Nieuwjaar',
     'pl_PL' => 'Nowy Rok',
+    'pt_BR' => 'Ano novo',
     'sv_SE' => 'nyårsdagen',
     'zh_Hant_TW' => '元旦',
 ];
