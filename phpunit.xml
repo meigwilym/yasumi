@@ -119,10 +119,15 @@
             <directory suffix="Test.php">./tests/Brazil</directory>
         </testsuite>
 
+        <!-- Test Suite for holidays in Croatia -->
+        <testsuite name="Croatia">
+            <directory suffix="Test.php">./tests/Croatia</directory>
+        </testsuite>
+
         <!-- Test Suite for holidays in Taiwan -->
         <testsuite name="Taiwan">
             <directory suffix="Test.php">./tests/Taiwan</directory>
-        </testsuite>        
+        </testsuite>  
 
     </testsuites>
     <filter>
