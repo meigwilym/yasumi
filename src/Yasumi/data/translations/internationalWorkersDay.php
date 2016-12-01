@@ -1,16 +1,16 @@
 <?php
 /**
- *  This file is part of the Yasumi package.
+ * This file is part of the Yasumi package.
  *
- *  Copyright (c) 2015 - 2016 AzuyaLabs
+ * Copyright (c) 2015 - 2016 AzuyaLabs
  *
- *  For the full copyright and license information, please view the LICENSE
- *  file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  *
- *  @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <stelgenhof@gmail.com>
  */
 
-// Translation for International Workers' Day
+// Translations for International Workers' Day
 return [
     'cs_CZ' => 'Svátek práce',
     'de_DE' => 'Tag der Arbeit',
@@ -27,6 +27,10 @@ return [
     'nl_NL' => 'Dag van de arbeid',
     'pl_PL' => 'Święto Pracy',
     'pt_BR' => 'Dia internacional do trabalhador',
+    'pt_PT' => 'Dia do Trabalhador',
+    'ru_UA' => 'День международной солидарности трудящихся',
+    'sk_SK' => 'Sviatok práce',
     'sv_SE' => 'Första maj',
     'zh_Hant_TW' => '国际劳动节'
+    'uk_UA' => 'День міжнародної солідарності трудящих',
 ];

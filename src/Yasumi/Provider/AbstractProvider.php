@@ -267,16 +267,6 @@ abstract class AbstractProvider implements ProviderInterface, Countable, Iterato
     }
 
     /**
-     * Get an iterator for the holidays.
-     *
-     * @return ArrayIterator iterator for the holidays of this calendar
-     */
-    public function getIterator()
-    {
-        return new ArrayIterator($this->getHolidays());
-    }
-
-    /**
      * Returns the current year set for this Holiday calendar.
      *
      * @return int the year set for this Holiday calendar
@@ -380,5 +370,15 @@ abstract class AbstractProvider implements ProviderInterface, Countable, Iterato
         }
 
         return new BetweenFilter($this->getIterator(), $start_date, $end_date, $equals);
+    }
+
+    /**
+     * Get an iterator for the holidays.
+     *
+     * @return ArrayIterator iterator for the holidays of this calendar
+     */
+    public function getIterator()
+    {
+        return new ArrayIterator($this->getHolidays());
     }
 }

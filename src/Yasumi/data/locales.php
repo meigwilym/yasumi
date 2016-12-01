@@ -1,13 +1,13 @@
 <?php
 /**
- *  This file is part of the Yasumi package.
+ * This file is part of the Yasumi package.
  *
- *  Copyright (c) 2015 - 2016 AzuyaLabs
+ * Copyright (c) 2015 - 2016 AzuyaLabs
  *
- *  For the full copyright and license information, please view the LICENSE
- *  file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  *
- *  @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <stelgenhof@gmail.com>
  */
 
 // List of possible locales. This list is used in case the 'intl' extension is not loaded/available.
@@ -87,6 +87,7 @@ return [
     'de_BE',
     'de_CH',
     'de_DE',
+    'de_IT',
     'de_LI',
     'de_LU',
     'dje_NE',
@@ -378,6 +379,8 @@ return [
     'nb_NO',
     'nb_SJ',
     'nd_ZW',
+    'nds_DE',
+    'nds_NL',
     'ne_IN',
     'ne_NP',
     'nl_AW',

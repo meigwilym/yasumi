@@ -13,7 +13,6 @@
 namespace Yasumi\Provider;
 
 use DateTime;
-use DateTimeZone;
 use Yasumi\Holiday;
 
 /**

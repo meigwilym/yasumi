@@ -1,22 +1,23 @@
 <?php
 /**
- *  This file is part of the Yasumi package.
+ * This file is part of the Yasumi package.
  *
- *  Copyright (c) 2015 - 2016 AzuyaLabs
+ * Copyright (c) 2015 - 2016 AzuyaLabs
  *
- *  For the full copyright and license information, please view the LICENSE
- *  file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  *
- *  @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <stelgenhof@gmail.com>
  */
 
-// Translation for Good Friday
+// Translations for Good Friday
 return [
     'cs_CZ' => 'Velký pátek',
     'cy_GB' => 'Gwener y Groglith',
     'da_DK' => 'Langfredag',
     'de_DE' => 'Karfreitag',
     'el_GR' => 'Μεγάλη Παρασκευή',
+    'en_AU' => 'Good Friday',
     'en_GB' => 'Good Friday',
     'en_NZ' => 'Good Friday',
     'en_US' => 'Good Friday',
@@ -29,5 +30,7 @@ return [
     'nl_NL' => 'Goede Vrijdag',
     'pl_PL' => 'Wielki Piątek',
     'pt_BR' => 'Sexta feira santa',
+    'pt_PT' => 'Sexta-feira Santa',
+    'sk_SK' => 'Veľký piatok',
     'sv_SE' => 'långfredagen',
 ];

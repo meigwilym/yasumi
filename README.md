@@ -2,14 +2,14 @@
 Yasumi
 ==========
 
-Yasumi (Japanese for 'Holiday') is an easy PHP library to help you calculate the dates and names of holidays and other
+Yasumi (Japanese for 'Holiday'「休み」) is an easy PHP library to help you calculate the dates and names of holidays and other
 special celebrations from various countries/states. Many services exist on the internet that provide holidays, however
 are either not free or offer only limited information. In addition, no complete PHP library seems to exist today
-that covers a wide range of holidays and countries, except maybe [PEAR's Date_Holidays](https://pear.php.net/package/Date_Holidays) 
+that covers a wide range of holidays and countries, except maybe [PEAR's Date_Holidays](https://pear.php.net/package/Date_Holidays)
 which unfortunately hasn't been updated for a long time.
 
 The goal of Yasumi is to be powerful while remaining lightweight, by utilizing PHP native classes wherever possible.
-Yasumi's calculation is provider-based (i.e. by country/state) so it is easy to add new holiday providers that calculate
+Yasumi's calculation is provider-based (i.e. by country/state) sos easy to add new holiday providers that calculate
 holidays. The methods of Yasumi can be used to get a holiday's date and name in various languages.
 
 
@@ -20,9 +20,10 @@ Contents
 * [Installation](#installation)
 * [Basic Usage](#usage)
 * [Testing](#testing)
-* [Contributing to Yasumi](#contributing)
+* [Contributing](#contributing)
+* [Credits](#credits)
 * [License](#license)
-* [Information Sources](#license)
+* [Sources](#license)
 
 
 Highlights<a name="highlights"></a>
@@ -33,7 +34,7 @@ Highlights<a name="highlights"></a>
 * Common Holiday Providers
 * Global Translations
 * Implements ArrayIterator to easily process a provider's holidays
-* Filters enabling to easily select certain holiday types (Official, Observed, Bank, Seasonal or Other) 
+* Filters enabling to easily select certain holiday types (Official, Observed, Bank, Seasonal or Other)
 * Fully documented
 * Fully Unit tested
 * Framework-agnostic
@@ -41,16 +42,17 @@ Highlights<a name="highlights"></a>
 * Accounts for the date/time when holidays have been officially established and/or abolished
 * Composer ready, [PSR-2] compliant
 
-Currently the following holiday providers are implemented:
+Yasumi currently supports 62 holiday providers (23 countries and 39 sub-regions):
 
+* Australia (including the sub-region Victoria)
 * Belgium
 * Brazil
 * Croatia
 * Czech Republic
 * Denmark
 * Finland
-* France (including the sub-regions Bas-Rhin, Haut-Rhin and Moselle)
-* Germany
+* France (including the sub-regions Bas-Rhin, Haut-Rhin, Moselle)
+* Germany (including the sub-regions Baden-Württemberg, Bavaria, Berlin, Brandenburg, Bremen, Hamburg, Hesse, Lower Saxony, Mecklenburg-Vorpommern, North Rhine-Westphalia, Rhineland-Palatinate, Saarland, Saxony, Saxony-Anhalt, Schleswig-Holstein, Thuringia)
 * Greece
 * Italy
 * Japan
@@ -58,12 +60,13 @@ Currently the following holiday providers are implemented:
 * New Zealand
 * Norway
 * Poland
-* Spain (including the sub-regions Andalusia, Aragon, Asturias, Balearic Islands, Basque Country, Canary Islands, 
-         Cantabria, Castile and León, Castilla-La Mancha, Catalonia, Ceuta, Community of Madrid, Extremadura, Galicia,
-         La Rioja, Melilla, Navarre, Region of Murcia, Valencian Community)
+* Portugal
+* Slovakia
+* Spain (including the sub-regions Andalusia, Aragon, Asturias, Balearic Islands, Basque Country, Canary Islands, Cantabria, Castile and León, Castile-La Mancha, Catalonia, Ceuta, Madrid Autonomous Community, Extremadura, Galicia, La Rioja, Melilla, Navarra Chartered Community, Murcia Region, Valencian Community)
 * Sweden
-* USA
-* UnitedKingdom
+* United States
+* Ukraine
+* United Kingdom
 
 Yasumi has the following filters to allow you to filter only certain type of holidays:
 
@@ -80,7 +83,6 @@ each release :)
 ### Roadmap
 
 - Taiwan
-- Australia
 - Canada
 - India
 
@@ -89,7 +91,8 @@ System Requirements<a name="requirements"></a>
 -------------------
 
 You need **PHP >= 5.5.0** to use `azuyalabs/yasumi` but the latest stable version of PHP is recommended.
-Yasumi is verified and tested on PHP 5.5, 5.6 and 7.0.
+Yasumi is verified and tested on PHP 5.5, 5.6 and 7.0. Although Yasumi will work with PHP 5.5, only PHP version 5.6 or
+higher is supported.
 
 
 Installation<a name="installation"></a>
@@ -110,8 +113,8 @@ Basic Usage<a name="usage"></a>
 // Require the composer auto loader
 require 'vendor/autoload.php';
 
-use Yasumi\Yasumi;
 use Yasumi\Filters\OfficialHolidaysFilter;
+use Yasumi\Yasumi;
 
 // Use the factory to create a new holiday provider instance
 $holidays = Yasumi::create('USA', 2016);
@@ -195,25 +198,32 @@ foreach ($official as $day) {
 // 'Whitmonday'
 // 'Christmas'
 // 'Boxing Day'
+
+// Calculate number of business/working days until a date
+$nextBusinessDay = Yasumi::nextWorkingDay('USA', new \DateTime('2016-07-01', new \DateTimeZone('America/New_York')));
+echo $nextBusinessDay->format('Y-m-d') . PHP_EOL;
+// 2016-07-05
 ```
+
 
 Testing<a name="testing"></a>
 -------
 
-Yasumi has a [PHPUnit](https://phpunit.de/) test suite. To run the tests, run the following command from the project 
+Yasumi has a [PHPUnit](https://phpunit.de/) test suite. To run the tests, run the following command from the project
 folder:
 
 ``` bash
 $ phpunit
 ```
 
-Yasumi has over 1148 unit tests with multiple iterations of assertions. Since Yasumi is using randomized years for asserting
+Yasumi has over 1500 unit tests with multiple iterations of assertions. Since Yasumi is using randomized years for asserting
 the holidays, multiple iterations of assertions are executed to ensure the holidays are calculated in a large number
 of years.
 
 The tests are organized in some test suites to make testing a bit more easier:
 
 * "Base"          : For testing the base functionality of Yasumi
+* "Australia"     : For separately testing the Australia Holiday Provider
 * "Belgium"       : For separately testing the Belgium Holiday Provider
 * "Brazil"        : For separately testing the Brazil Holiday Provider
 * "Croatia"       : For separately testing the Croatia Holiday Provider
@@ -229,34 +239,40 @@ The tests are organized in some test suites to make testing a bit more easier:
 * "NewZealand"    : For separately testing the New Zealand Holiday Provider
 * "Norway"        : For separately testing the Norway Holiday Provider
 * "Poland"        : For separately testing the Poland Holiday Provider
+* "Portugal"      : For separately testing the Portugal Holiday Provider
+* "Slovakia"      : For separately testing the Slovakia Holiday Provider
 * "Spain"         : For separately testing the Spain Holiday Provider
 * "Sweden"        : For separately testing the Sweden Holiday Provider
 * "USA"           : For separately testing the USA Holiday Provider
+* "Ukraine"       : For separately testing the Ukraine Holiday Provider
 * "UnitedKingdom" : For separately testing the United Kingdom Holiday Provider
 
-Contributing to Yasumi<a name="contributing"></a>
--------
+## Testing
 
-Contributions are encouraged and welcome; we are always happy to get feedback or even pull requests. 
-In order to keep the code consistent, please use the following command after your completed work:
+Run the tests with:
 
 ``` bash
-$ composer php-cs-fixer
+$ composer test
 ```
 
-This will check/correct all the code for the PSR-2 Coding Standard using the wonderful [php-cs-fixer](http://cs.sensiolabs.org/) .
+or alternatively run with:
 
-If you like to add a new Holiday Provider, the best starting point is to use on of the existing holiday providers. There
-are a few things to keep consider:
+``` bash
+$ vendor/bin/phpunit
+```
 
-1. Ensure your new Holiday Provider contains all the necessary unit tests.
-2. Next to the file '<REGIONNAME>BaseTestCase.php', a file called '<REGIONNAME>Test.php' needs to be present. This file
-   needs to include region/country level tests and requires assertion of all expected holidays.
-3. All the unit tests and the implementation Holiday Provider require to have the correct locale, timezone and
-   region/country name.
-4. As almost all of the tests use automatic iterations, make sure the year for which the test is executed is a valid 
-   year. Some holidays are only established from a certain year and having the test year number smaller than the minimum
-   establishment year (amongst all holidays) can result in false errors.
+
+Contributing<a name="contributing"></a>
+-------
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+
+Credits<a name="credits"></a>
+-------
+
+- [Sacha Telgenhof](https://github.com/stelgenhof)
+- [All Contributors](../../contributors)
 
 
 License<a name="license"></a>
@@ -268,9 +284,9 @@ Yasumi is open-sourced software licensed under the MIT License (MIT). Please see
 [PSR-2]: http://www.php-fig.org/psr/psr-2/
 
 
-Information Sources<a name="sources"></a>
+Sources<a name="sources"></a>
 -------
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Main_Page) 
+- [Wikipedia](https://en.wikipedia.org/wiki/Main_Page)
 - [Timeanddate.com](http://www.timeanddate.com/)  
 - [CLDR - Unicode Common Locale Data Repository](http://cldr.unicode.org/)  

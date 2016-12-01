@@ -1,4 +1,5 @@
 <?php
+
 /**
  *  This file is part of the Yasumi package.
  *
@@ -7,7 +8,7 @@
  *  For the full copyright and license information, please view the LICENSE
  *  file that was distributed with this source code.
  *
- *  @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <stelgenhof@gmail.com>
  */
 namespace Yasumi\tests\Base;
 
@@ -23,7 +24,6 @@ use Yasumi\Translations;
  */
 class TranslationsTest extends PHPUnit_Framework_TestCase
 {
-
     private $locales = [
         'en_US',
         'nl_NL',
