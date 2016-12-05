@@ -1,4 +1,5 @@
 <?php
+
 /**
  *  This file is part of the Yasumi package.
  *
@@ -10,30 +11,33 @@
  * @author Sacha Telgenhof <stelgenhof@gmail.com>
  */
 
-namespace Yasumi\tests\Germany;
+namespace Yasumi\tests\SouthAfrica;
 
 use PHPUnit_Framework_TestCase;
 use Yasumi\tests\YasumiBase;
 
 /**
- * Base class for test cases of the Germany holiday provider.
+ * Base class for test cases of the South Africa holiday provider.
+ *
+ * @package Yasumi\tests\SouthAfrica
+ * @author  Sacha Telgenhof <stelgenhof@gmail.com>
  */
-abstract class GermanyBaseTestCase extends PHPUnit_Framework_TestCase
+abstract class SouthAfricaBaseTestCase extends PHPUnit_Framework_TestCase
 {
     use YasumiBase;
 
     /**
      * Name of the region (e.g. country / state) to be tested
      */
-    const REGION = 'Germany';
+    const REGION = 'SouthAfrica';
 
     /**
      * Timezone in which this provider has holidays defined
      */
-    const TIMEZONE = 'Europe/Berlin';
+    const TIMEZONE = 'Africa/Johannesburg';
 
     /**
      * Locale that is considered common for this provider
      */
-    const LOCALE = 'de_DE';
+    const LOCALE = 'en_ZA';
 }
