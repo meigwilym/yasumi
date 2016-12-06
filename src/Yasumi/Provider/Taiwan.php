@@ -114,7 +114,7 @@ class Taiwan extends AbstractProvider
 
         // Loop through all defined holidays
         while ($datesIterator->valid()) {
-            echo  $datesIterator->current()->format('Y').PHP_EOL;
+            //echo  $datesIterator->current()->format('Y').PHP_EOL;
             $datesIterator->next();
         }
 
