@@ -107,7 +107,8 @@ class Taiwan extends AbstractProvider
      * In case it falls on a Saturday, the deferred day off is on the preceding workday; Otherwise, it falls on a Sunday
      * the deferred day off is on he following workday.
      */
-    private function calculateSubstituteHolidays() {
+    private function calculateSubstituteHolidays()
+    {
 
         // Get initial list of holidays and iterator
         $datesIterator = $this->getIterator();
@@ -117,6 +118,5 @@ class Taiwan extends AbstractProvider
             //echo  $datesIterator->current()->format('Y').PHP_EOL;
             $datesIterator->next();
         }
-
-    }    
+    }
 }
